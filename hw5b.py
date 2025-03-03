@@ -34,6 +34,17 @@ def ffPoint(Re, rr):
 
 
 def PlotPoint(Re, f):
+    """
+        Plots the user-specified point (Re, f) on the existing Moody chart.
+
+        If the flow is transitional (2000 < Re < 4000), the point is plotted
+        with a triangular marker ('^'). Otherwise (laminar or turbulent),
+        the point is plotted with a circular marker ('o').
+
+        :param Re: the Reynolds number at which to plot the point (float)
+        :param f: the friction factor value to plot (float)
+        :return: None
+        """
     # Determine marker style based on Reynolds number
     if 2000 < Re < 4000:
         marker = '^'  # Upwards-pointing triangle for transition flow
@@ -45,6 +56,18 @@ def PlotPoint(Re, f):
 
 
 def main():
+    """
+        Main driver function that repeatedly prompts the user for:
+          - Reynolds number (Re),
+          - Relative roughness (rr),
+          - Pipe diameter in inches (di).
+
+        It then computes the friction factor via ffPoint(Re, rr) and calls PlotPoint
+        to display the result on the Moody chart. The user can repeat this process
+        multiple times until they choose to stop.
+
+        :return: None
+        """
     while True:
         Re = float(input("Enter the Reynolds number: "))
         rr = float(input("Enter the relative roughness: "))
