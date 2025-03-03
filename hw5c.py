@@ -1,4 +1,10 @@
 # region imports
+"""
+This region contains all the necessary imports for the script.
+- numpy (np): Used for numerical operations and array manipulations.
+- solve_ivp from scipy.integrate: Used to solve initial value problems for systems of ordinary differential equations.
+- matplotlib.pyplot (plt): Used for plotting graphs and visualizing data.
+"""
 import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
@@ -37,7 +43,13 @@ def ode_system(t, X, *params):
     return [xdot, xddot, p1dot, p2dot]
 
 def main():
-    # After some trial and error, I found all the action seems to happen in the first 0.02 seconds
+    """
+    Main function to solve the hydraulic valve system differential equations and plot the results.
+    - Defines the time range and system parameters.
+    - Sets initial conditions for the state variables.
+    - Solves the system of differential equations using solve_ivp.
+    - Plots the results for position (x), velocity (xdot), and pressures (p1, p2).
+    """
     t = np.linspace(0, 0.02, 200)
     # myargs=(A, Cd, Ps, Pa, V, beta, rho, Kvalve, m, y)
     myargs = (4.909E-4, 0.6, 1.4E7, 1.0E5, 1.473E-4, 2.0E9, 850.0, 2.0E-5, 30, 0.002)
